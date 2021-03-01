@@ -1,13 +1,75 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+	--boxSize: 4rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+	box-sizing: border-box;
+	font-size: 10px;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+  min-height: 100vh;
+}
+
+.app {
+	border: 1px solid red;
+	width: 80vw;
+	max-width: 120rem;
+	height: 100vh;
+	margin: 0 auto;
+}
+
+.game {
+  border: 2px solid yellow;
+  width: 100%;
+  height: 100%;
+}
+
+.game-area {
+  /* display: grid;
+  grid-template: auto auto auto / 1fr 1fr 1fr;
+  grid-template-areas:
+    'board board shipyard'
+    'board board shipyard'
+    'board board shipyard'; */
+  height: 80%;
+}
+
+.game-board {
+	display: grid;
+	grid-template: repeat(10, auto) / repeat(10, minmax(1.6rem, 1fr));
+	align-items: start;
+	max-width: calc(10 * var(--boxSize));
+}
+
+.board-square {
+	width: var(--boxSize);
+	height: var(--boxSize);
+	border: 1px dashed darkblue;
+}
+
+.frigate {
+	width: var(--boxSize);
+	height: calc(2 * var(--boxSize));
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+}
+
+.frigate div {
+	width: var(--boxSize);
+	height: var(--boxSize);
+	border-bottom: 1px solid black;
 }
