@@ -73,3 +73,7 @@ body {
 	height: var(--boxSize);
 	border-bottom: 1px solid black;
 }
+
+.hovered-square {
+	border: 2px solid orange;
+}

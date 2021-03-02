@@ -1,14 +1,12 @@
-import { Board } from '../types';
-
-const boards: Board[] = Array.from({ length: 100 }, (_, i) => ({ id: i + 1 }));
+import { useAppSelector } from '../store/hooks';
+import { GameSquare } from './Square';
 
 const GameBoard = () => {
+	const board = useAppSelector((state) => state.board);
 	return (
 		<div className="game-board">
-			{boards.map((b) => (
-				<div key={b.id} className="board-square">
-					{b.id}
-				</div>
+			{board.map((sq) => (
+				<GameSquare square={sq} key={sq.id}/>
 			))}
 		</div>
 	);
