@@ -9,7 +9,7 @@ interface Props {
 
 const Frigate = ({ gameAreaRef }: Props) => {
 	const dragControls = useDragControls();
-	const selectedShip = useAppSelector((state) => state.selectedShip.value);
+	const selectedShip = useAppSelector((state) => state.selectedShip);
 	const dispatch = useAppDispatch();
 
 	return (

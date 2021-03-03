@@ -13,6 +13,13 @@ export interface SelectedShip {
 	bottom: number;
 }
 
+export interface Coordinates {
+	top: number;
+	left: number;
+	bottom: number;
+	right: number;
+}
+
 export type Ship = Carrier | BattleShip | Destroyer | Submarine | PatrolBoat;
 
 export type Carrier = {

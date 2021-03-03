@@ -1,24 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SelectedShip } from '../types';
 
-interface SelectedShipState {
-	value: null | SelectedShip;
-}
+type SelectedShipState = null | SelectedShip;
 
-const initialState: SelectedShipState = {
-	value: null,
-};
+const initialState: SelectedShipState = null as SelectedShipState;
 
 export const selectedShipSlice = createSlice({
 	name: 'selectedShip',
 	initialState,
 	reducers: {
-		selectShip: (state, action: PayloadAction<SelectedShip>) => {
-			state.value = action.payload;
-		},
-		unselectShip: (state) => {
-			state.value = null;
-		},
+		selectShip: (_, action: PayloadAction<SelectedShip>) => action.payload,
+		unselectShip: (_) => null,
 	},
 });
 

@@ -12,7 +12,7 @@ export const LocalSinglePlayer = () => {
 			<div className="game-area" ref={gameAreaRef}>
 				<GameBoard />
 				<Frigate gameAreaRef={gameAreaRef} />
-				<h2>{selectedShip.value?.name}</h2>
+				<h2>{selectedShip?.name}</h2>
 			</div>
 		</div>
 	);
