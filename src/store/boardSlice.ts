@@ -12,15 +12,21 @@ export const boardSlice = createSlice({
 	name: 'board',
 	initialState,
 	reducers: {
-		toggleHighlightSquare: (state, action: PayloadAction<number>) => {
+		highlightSquare: (state, action: PayloadAction<number>) => {
 			let square = state.find((b) => b.id === action.payload);
 			if (square) {
-				square.hovered = !square.hovered;
+				square.hovered = true;
+			}
+		},
+		unHighlightSquare: (state, action: PayloadAction<number>) => {
+			let square = state.find((b) => b.id === action.payload);
+			if (square) {
+				square.hovered = false;
 			}
 		},
 	},
 });
 
-export const { toggleHighlightSquare } = boardSlice.actions;
+export const { highlightSquare, unHighlightSquare } = boardSlice.actions;
 
 export default boardSlice.reducer;

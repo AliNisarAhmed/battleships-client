@@ -2,8 +2,8 @@ import { Square } from '../types';
 import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { useEffect, useRef } from 'react';
-import { toggleHighlightSquare } from '../store/boardSlice';
-import { checkIfBoxHovered, checkIfBoxNotHovered } from '../utils';
+import { highlightSquare, unHighlightSquare } from '../store/boardSlice';
+import { checkIfBoxHovered } from '../utils';
 
 interface Props {
 	square: Square;
@@ -14,27 +14,18 @@ export const GameSquare = ({ square }: Props) => {
 
 	const squareRef = useRef<any>(null);
 
-
 	useEffect(() => {
-		if (!square.hovered && squareRef.current && selectedShip) {
+		if (square.hovered && squareRef.current && selectedShip) {
 			const coordinates = squareRef.current.getBoundingClientRect();
-			const condition = checkIfBoxHovered(selectedShip, coordinates);
-			if (square.id === 100) {
-				console.log('selectedShip :>> ', selectedShip);
-				console.log('coordinates :>> ', coordinates);
-				console.log('condition: ', condition);
+			if (!checkIfBoxHovered(selectedShip, coordinates)) {
+				dispatch(unHighlightSquare(square.id));
 			}
-			if (condition) {
-				dispatch(toggleHighlightSquare(square.id));
+		} else if (!square.hovered && squareRef.current && selectedShip) {
+			const coordinates = squareRef.current.getBoundingClientRect();
+			if (checkIfBoxHovered(selectedShip, coordinates)) {
+				dispatch(highlightSquare(square.id));
 			}
 		}
-
-		// else if (square.hovered && squareRef.current && selectedShip) {
-		// 	const coordinates = squareRef.current.getBoundingClientRect();
-		// 	if (checkIfBoxNotHovered(selectedShip, coordinates)) {
-		// 		dispatch(toggleHighlightSquare(square.id));
-		// 	}
-		// }
 	}, [
 		dispatch,
 		selectedShip?.top,

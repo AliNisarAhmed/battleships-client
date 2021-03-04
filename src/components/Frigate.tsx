@@ -1,4 +1,5 @@
 import { motion, useDragControls } from 'framer-motion';
+import { useRef } from 'react';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { selectShip, unselectShip } from '../store/selectedShipSlice';
 import { ShipName } from '../types';
@@ -11,33 +12,53 @@ const Frigate = ({ gameAreaRef }: Props) => {
 	const dragControls = useDragControls();
 	const selectedShip = useAppSelector((state) => state.selectedShip);
 	const dispatch = useAppDispatch();
+	const shipRef = useRef<any>(null);
 
 	return (
 		<motion.div
-			onPointerDown={(event: any) => startDrag(event, 'PatrolBoat')}
-			onPointerMove={(event: any) => movePointer(event, 'PatrolBoat')}
+			onPointerDown={() => startDrag('PatrolBoat')}
+			onPointerMove={() => movePointer('PatrolBoat')}
 			onPointerUp={endDrag}
 			drag
 			dragControls={dragControls}
 			dragConstraints={gameAreaRef}
 			className="frigate"
+			ref={shipRef}
 		>
 			<div></div>
 			<div></div>
 		</motion.div>
 	);
 
-	function movePointer(event: any, name: ShipName) {
-		if (selectedShip) {
-			const { top, left, bottom, right } = event.target.getBoundingClientRect();
-			dispatch(selectShip({ name, top, left, bottom, right }));
+	function movePointer(name: ShipName) {
+		if (selectedShip && shipRef.current) {
+			const {
+				top,
+				left,
+				bottom,
+				right,
+				x,
+				y,
+				width,
+				height,
+			} = shipRef.current.getBoundingClientRect();
+			dispatch(selectShip({ name, top, left, bottom, right, x, y, width, height }));
 		}
 	}
 
-	function startDrag(event: any, name: ShipName) {
-		if (!selectedShip) {
-			const { top, left, right, bottom } = event.target.getBoundingClientRect();
-			dispatch(selectShip({ name, top, left, bottom, right }));
+	function startDrag(name: ShipName) {
+		if (!selectedShip && shipRef.current) {
+			const {
+				top,
+				left,
+				right,
+				bottom,
+				x,
+				y,
+				width,
+				height,
+			} = shipRef.current.getBoundingClientRect();
+			dispatch(selectShip({ name, top, left, bottom, right, x, y, width, height }));
 		}
 	}
 

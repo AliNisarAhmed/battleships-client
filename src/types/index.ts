@@ -11,6 +11,10 @@ export interface SelectedShip {
 	left: number;
 	right: number;
 	bottom: number;
+	x: number;
+	y: number;
+	width: number;
+	height: number;
 }
 
 export interface Coordinates {

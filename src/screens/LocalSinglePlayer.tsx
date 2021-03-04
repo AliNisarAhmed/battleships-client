@@ -13,6 +13,12 @@ export const LocalSinglePlayer = () => {
 				<GameBoard />
 				<Frigate gameAreaRef={gameAreaRef} />
 				<h2>{selectedShip?.name}</h2>
+				<p>{selectedShip?.left}</p>
+				<p>{selectedShip?.right}</p>
+				<p>{selectedShip?.top}</p>
+				<p>{selectedShip?.bottom}</p>
+				<p>{selectedShip?.width}</p>
+				<p>{selectedShip?.height}</p>
 			</div>
 		</div>
 	);
