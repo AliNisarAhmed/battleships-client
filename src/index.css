@@ -60,20 +60,26 @@ body {
 	border: 1px dashed darkblue;
 }
 
-.frigate {
+.hovered-square {
+	border: 2px solid orange;
+}
+
+.shipyard {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.ship {
 	width: var(--boxSize);
-	height: calc(2 * var(--boxSize));
 	display: flex;
 	flex-direction: column;
 	border: 1px solid black;
 }
 
-.frigate div {
+.ship div {
 	width: var(--boxSize);
 	height: var(--boxSize);
 	border-bottom: 1px solid black;
-}
-
-.hovered-square {
-	border: 2px solid orange;
 }

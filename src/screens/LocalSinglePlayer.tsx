@@ -1,5 +1,5 @@
 import GameBoard from '../components/GameBoard';
-import Frigate from '../components/Frigate';
+import Shipyard from '../components/Shipyard';
 import { useRef } from 'react';
 import { useAppSelector } from '../store/hooks';
 
@@ -11,7 +11,7 @@ export const LocalSinglePlayer = () => {
 		<div className="game">
 			<div className="game-area" ref={gameAreaRef}>
 				<GameBoard />
-				<Frigate gameAreaRef={gameAreaRef} />
+				<Shipyard gameAreaRef={gameAreaRef}/>
 				<h2>{selectedShip?.name}</h2>
 				<p>{selectedShip?.left}</p>
 				<p>{selectedShip?.right}</p>

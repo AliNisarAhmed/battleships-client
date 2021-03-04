@@ -38,27 +38,10 @@ export interface Coordinates {
 	right: number;
 }
 
-export type Carrier = {
-	name: ShipClass.Carrier;
-	size: 5;
-};
-
-export type Battleship = {
-	name: ShipClass.Battleship;
-	size: 4;
-};
-
-export type Destroyer = {
-	name: ShipClass.Destroyer;
-	size: 3;
-};
-
-export type Submarine = {
-	name: ShipClass.Submarine;
-	size: 3;
-};
-
-export type PatrolBoat = {
-	name: ShipClass.PatrolBoat;
-	size: 2;
+export const ShipSize = {
+	[ShipClass.Carrier]: 5,
+	[ShipClass.Battleship]: 4,
+	[ShipClass.Destroyer]: 3,
+	[ShipClass.Submarine]: 3,
+	[ShipClass.PatrolBoat]: 2,
 };
