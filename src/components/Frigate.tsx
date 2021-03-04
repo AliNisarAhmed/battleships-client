@@ -2,7 +2,7 @@ import { motion, useDragControls } from 'framer-motion';
 import { useRef } from 'react';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { selectShip, unselectShip } from '../store/selectedShipSlice';
-import { ShipName } from '../types';
+import { ShipClass, ShipName } from '../types';
 
 interface Props {
 	gameAreaRef: any;
@@ -16,8 +16,8 @@ const Frigate = ({ gameAreaRef }: Props) => {
 
 	return (
 		<motion.div
-			onPointerDown={() => startDrag('PatrolBoat')}
-			onPointerMove={() => movePointer('PatrolBoat')}
+			onPointerDown={() => startDrag(ShipClass.PatrolBoat)}
+			onPointerMove={() => movePointer(ShipClass.PatrolBoat)}
 			onPointerUp={endDrag}
 			drag
 			dragControls={dragControls}
