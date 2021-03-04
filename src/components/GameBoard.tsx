@@ -5,8 +5,8 @@ const GameBoard = () => {
 	const board = useAppSelector((state) => state.board);
 	return (
 		<div className="game-board">
-			{board.map((sq) => (
-				<GameSquare square={sq} key={sq.id}/>
+			{Object.entries(board).map(([id, sq]) => (
+				<GameSquare square={sq} key={sq.id} />
 			))}
 		</div>
 	);

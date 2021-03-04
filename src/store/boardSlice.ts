@@ -1,28 +1,28 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Square } from '../types';
 
-type BoardState = Square[];
+interface BoardState {
+	[key: string]: Square;
+}
 
-const initialState: BoardState = Array.from({ length: 100 }, (_, i) => ({
-	id: i + 1,
-	hovered: false,
-}));
+const initialState: BoardState = {};
+
+Array.from({ length: 100 }).forEach((_, i) => {
+	initialState[i + 1] = {
+		id: i + 1,
+		hovered: false,
+	};
+});
 
 export const boardSlice = createSlice({
 	name: 'board',
 	initialState,
 	reducers: {
 		highlightSquare: (state, action: PayloadAction<number>) => {
-			let square = state.find((b) => b.id === action.payload);
-			if (square) {
-				square.hovered = true;
-			}
+			state[action.payload].hovered = true;
 		},
 		unHighlightSquare: (state, action: PayloadAction<number>) => {
-			let square = state.find((b) => b.id === action.payload);
-			if (square) {
-				square.hovered = false;
-			}
+			state[action.payload].hovered = false;
 		},
 	},
 });
