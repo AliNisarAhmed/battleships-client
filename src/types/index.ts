@@ -11,6 +11,8 @@ export type ShipName =
 	| ShipClass.Submarine
 	| ShipClass.PatrolBoat;
 
+type ShipOrientation = 'Horizontal' | 'Vertical';
+
 export interface SelectedShip {
 	name: ShipName;
 	top: number;
@@ -21,6 +23,7 @@ export interface SelectedShip {
 	y: number;
 	width: number;
 	height: number;
+	shipOrientation: ShipOrientation
 }
 
 export enum ShipClass {

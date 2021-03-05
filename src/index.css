@@ -66,20 +66,26 @@ body {
 
 .shipyard {
 	display: flex;
-	width: 100%;
-	justify-content: space-between;
+	flex-direction: column;
+	justify-content: flex-start;
 	align-items: flex-start;
+	border: 1px solid greenyellow;
 }
 
 .ship {
-	width: var(--boxSize);
+	/* width: var(--boxSize); */
 	display: flex;
-	flex-direction: column;
+	/* flex-direction: column; */
 	border: 1px solid black;
 }
 
 .ship div {
 	width: var(--boxSize);
 	height: var(--boxSize);
+}
+
+.ship.vertical {
+	flex-direction: column;
 	border-bottom: 1px solid black;
 }
+
