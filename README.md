@@ -18,9 +18,10 @@ Features will be developed in the following phases.
 ### Phase 1
 
 1. Allow local play against computer
-2. Styles of the game are almost finalized with good animations.
-3. Max keyboard support wherever possible.
-4. Responsive design makes the game playable on mobile
+2. Have the design prototypes on Figma
+3. Styles of the game are almost finalized with good animations.
+4. Max keyboard support wherever possible.
+5. Responsive design makes the game playable on mobile
 
 
 ### Phase 2
