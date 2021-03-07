@@ -3,7 +3,6 @@ export interface Square {
 	hovered: boolean;
 }
 
-// export type ShipName = 'Carrier' | 'BattleShip' | 'Destroyer' | 'Submarine' | 'PatrolBoat';
 export type ShipName =
 	| ShipClass.Carrier
 	| ShipClass.Battleship
@@ -23,7 +22,7 @@ export interface SelectedShip {
 	y: number;
 	width: number;
 	height: number;
-	shipOrientation: ShipOrientation
+	shipOrientation: ShipOrientation;
 }
 
 export enum ShipClass {
@@ -48,3 +47,9 @@ export const ShipSize = {
 	[ShipClass.Submarine]: 3,
 	[ShipClass.PatrolBoat]: 2,
 };
+
+export interface ShipEntity {
+	entityName: ShipClass;
+	squares: [] | [number, number, number?, number?, number?];
+	placedOnBoard: boolean;
+}
