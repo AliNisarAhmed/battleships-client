@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ShipClass, ShipEntity } from '../types';
+import { PlaceShipAction, ShipClass, ShipEntity } from '../types';
 
 const initialState: ShipEntity[] = [
-	{ entityName: ShipClass.Carrier, placedOnBoard: true, squares: [1, 2, 3] },
+	{ entityName: ShipClass.Carrier, placedOnBoard: false, squares: [] },
 	{ entityName: ShipClass.Battleship, placedOnBoard: false, squares: [] },
 	{ entityName: ShipClass.Destroyer, placedOnBoard: false, squares: [] },
 	{ entityName: ShipClass.Submarine, placedOnBoard: false, squares: [] },
@@ -13,7 +13,13 @@ export const shipSlice = createSlice({
 	name: 'shipSlice',
 	initialState,
 	reducers: {
-		placeShipOnBoard: (state) => state,
+		placeShipOnBoard: (state, action: PayloadAction<PlaceShipAction>) => {
+			const selectedShip = state.find(s => s.entityName === action.payload.shipName);
+			if (selectedShip) {
+				selectedShip.placedOnBoard = true;
+				selectedShip.squares = action.payload.squares
+			}
+		},
 	},
 });
 

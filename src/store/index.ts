@@ -4,6 +4,7 @@ import boardReducer from './boardSlice';
 import shipReducer from './shipSlice';
 
  const store = configureStore({
+	devTools: true,
 	reducer: {
 		selectedShip: selectedShipReducer,
 		board: boardReducer,

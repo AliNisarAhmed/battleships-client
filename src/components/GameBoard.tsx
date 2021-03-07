@@ -7,7 +7,7 @@ const GameBoard = () => {
 	const board = useAppSelector((state) => state.board);
 	const ships = useAppSelector((state) => state.ships);
 
-	const occupiedBoardIds = useMemo(() => ships.flatMap((s) => s.squares), [ships]);
+	const occupiedBoardIds = ships.flatMap((s) => s.squares);
 
 	return (
 		<div className="game-board">

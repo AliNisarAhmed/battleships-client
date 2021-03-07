@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
-import { ShipClass, ShipName, ShipSize } from '../types';
+import { PlacedShipSquares, ShipClass, ShipName, ShipSize } from '../types';
 import { useRef } from 'react';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { selectShip, unselectShip } from '../store/selectedShipSlice';
 import classNames from 'classnames';
+import { placeShipOnBoard } from '../store/shipSlice';
+import { clearHoveredSquares } from '../store/boardSlice';
 
 interface Props {
 	gameAreaRef: any;
@@ -18,6 +20,7 @@ const spring = {
 
 const Ship = ({ gameAreaRef, shipClass }: Props) => {
 	const selectedShip = useAppSelector((state) => state.selectedShip);
+	const board = useAppSelector((state) => state.board);
 	const dispatch = useAppDispatch();
 	const shipRef = useRef<any>(null);
 	const shipContainerRef = useRef<any>(null);
@@ -38,7 +41,7 @@ const Ship = ({ gameAreaRef, shipClass }: Props) => {
 			<motion.div
 				onPointerDown={() => startDrag(shipClass)}
 				onPointerMove={() => movePointer(shipClass)}
-				onPointerUp={endDrag}
+				onPointerUp={() => endDrag(shipClass)}
 				drag
 				// dragControls={dragControls}
 				dragConstraints={shipContainerRef}
@@ -127,9 +130,24 @@ const Ship = ({ gameAreaRef, shipClass }: Props) => {
 		}
 	}
 
-	function endDrag(event: any) {
+	function endDrag(shipName: ShipName) {
 		if (selectedShip) {
-			dispatch(unselectShip());
+			const hoveredSquares = Object.entries(board)
+				.filter(([id, sqr]) => sqr.hovered)
+				.map(([_, sq]) => sq.id) as PlacedShipSquares;
+			if (hoveredSquares.length === ShipSize[shipName]) {
+				dispatch(
+					placeShipOnBoard({
+						shipName,
+						squares: hoveredSquares,
+					})
+				);
+				dispatch(clearHoveredSquares(hoveredSquares));
+				dispatch(unselectShip());
+			} else {
+				dispatch(clearHoveredSquares(hoveredSquares));
+				dispatch(unselectShip());
+			}
 		}
 	}
 };

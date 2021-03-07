@@ -48,8 +48,23 @@ export const ShipSize = {
 	[ShipClass.PatrolBoat]: 2,
 };
 
+// TODO: probably rename this type
+export type PlacedShipSquares =
+	[] |
+	[number] |
+	[number, number] |
+	[number, number, number] |
+	[number, number, number, number] |
+	[number, number, number, number, number];
+
 export interface ShipEntity {
 	entityName: ShipClass;
-	squares: [] | [number, number, number?, number?, number?];
+	squares: [] | PlacedShipSquares;
 	placedOnBoard: boolean;
+}
+
+
+export interface PlaceShipAction {
+	shipName: ShipName,
+	squares: PlacedShipSquares;
 }
