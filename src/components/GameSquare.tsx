@@ -15,26 +15,20 @@ export const GameSquare = ({ square }: Props) => {
 	const squareRef = useRef<any>(null);
 
 	useEffect(() => {
-		if (square.hovered && squareRef.current && selectedShip) {
-			const coordinates = squareRef.current.getBoundingClientRect();
-			if (!checkIfBoxHovered(selectedShip, coordinates)) {
-				dispatch(unHighlightSquare(square.id));
-			}
-		} else if (!square.hovered && squareRef.current && selectedShip) {
-			const coordinates = squareRef.current.getBoundingClientRect();
-			if (checkIfBoxHovered(selectedShip, coordinates)) {
-				dispatch(highlightSquare(square.id));
+		if (squareRef.current && selectedShip) {
+			if (square.hovered) {
+				const coordinates = squareRef.current.getBoundingClientRect();
+				if (!checkIfBoxHovered(selectedShip, coordinates)) {
+					dispatch(unHighlightSquare(square.id));
+				}
+			} else {
+				const coordinates = squareRef.current.getBoundingClientRect();
+				if (checkIfBoxHovered(selectedShip, coordinates)) {
+					dispatch(highlightSquare(square.id));
+				}
 			}
 		}
-	}, [
-		dispatch,
-		selectedShip?.top,
-		selectedShip?.right,
-		selectedShip?.left,
-		selectedShip?.bottom,
-		square.hovered,
-		square.id,
-	]);
+	}, [dispatch, selectedShip, square.hovered, square.id]);
 
 	const squareClass = classNames({
 		'board-square': true,
