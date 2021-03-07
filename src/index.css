@@ -64,6 +64,11 @@ body {
 	border: 2px solid orange;
 }
 
+.occupied-square {
+	background: #000;
+	border: 1px solid #fff;
+}
+
 .shipyard {
 	display: flex;
 	flex-direction: column;

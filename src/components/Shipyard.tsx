@@ -1,5 +1,5 @@
 import { FC, useRef } from 'react';
-import { ShipClass } from '../types';
+import { useAppSelector } from '../store/hooks';
 import Ship from './Ship';
 
 interface Props {
@@ -7,15 +7,14 @@ interface Props {
 }
 
 const Shipyard: FC<Props> = ({ gameAreaRef }) => {
+	const ships = useAppSelector((state) => state.ships);
 	const shipyardRef = useRef<any>(null);
 
 	return (
-		<div className="shipyard" ref={shipyardRef} >
-			<Ship gameAreaRef={shipyardRef} shipClass={ShipClass.PatrolBoat} />
-			<Ship gameAreaRef={shipyardRef} shipClass={ShipClass.Submarine} />
-			<Ship gameAreaRef={shipyardRef} shipClass={ShipClass.Destroyer} />
-			<Ship gameAreaRef={shipyardRef} shipClass={ShipClass.Battleship} />
-			<Ship gameAreaRef={shipyardRef} shipClass={ShipClass.Carrier} />
+		<div className="shipyard" ref={shipyardRef}>
+			{ships.filter(s => !s.placedOnBoard).map((ship) => (
+				<Ship gameAreaRef={shipyardRef} shipClass={ship.entityName} />
+			))}
 		</div>
 	);
 };
