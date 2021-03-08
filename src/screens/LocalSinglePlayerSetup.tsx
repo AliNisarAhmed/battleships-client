@@ -1,10 +1,11 @@
 import GameBoard from '../components/GameBoard';
 import Shipyard from '../components/Shipyard';
+import Controls from '../components/Controls';
 import { useCallback, useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { rotateShip } from '../store/selectedShipSlice';
 
-export const LocalSinglePlayer = () => {
+export const LocalSinglePlayerSetup = () => {
 	const gameAreaRef = useRef(null);
 	const selectedShip = useAppSelector((state) => state.selectedShip);
 	const dispatch = useAppDispatch();
@@ -31,6 +32,7 @@ export const LocalSinglePlayer = () => {
 			<div className="game-area" ref={gameAreaRef}>
 				<GameBoard />
 				<Shipyard />
+				<Controls />
 				<h2>{selectedShip?.name}</h2>
 				<p>{selectedShip?.left}</p>
 				<p>{selectedShip?.right}</p>
