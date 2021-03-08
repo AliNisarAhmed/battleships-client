@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { useAppSelector } from '../store/hooks';
 import { GameSquare } from './GameSquare';
 import { OccupiedSquare } from './OccupiedSquare';

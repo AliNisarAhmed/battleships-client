@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PlacedShipSquares, ShipClass, Square } from '../types';
+import { PlacedShipSquares, Square } from '../types';
 
 interface BoardState {
 	[key: string]: Square;
@@ -25,10 +25,10 @@ export const boardSlice = createSlice({
 			state[action.payload].hovered = false;
 		},
 		clearHoveredSquares: (state, action: PayloadAction<PlacedShipSquares>) => {
-			action.payload.forEach(sq => {
+			action.payload.forEach((sq) => {
 				state[sq].hovered = false;
-			})
-		}
+			});
+		},
 	},
 });
 

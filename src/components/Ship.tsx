@@ -3,7 +3,6 @@ import { PlacedShipSquares, ShipClass, ShipName, ShipSize } from '../types';
 import { useRef } from 'react';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { selectShip, unselectShip, updateShip } from '../store/selectedShipSlice';
-import classNames from 'classnames';
 import { placeShipOnBoard } from '../store/shipSlice';
 import { clearHoveredSquares } from '../store/boardSlice';
 
@@ -24,17 +23,6 @@ const Ship = ({ gameAreaRef, shipClass }: Props) => {
 	const dispatch = useAppDispatch();
 	const shipRef = useRef<any>(null);
 	const shipContainerRef = useRef<any>(null);
-	const shipClassNames = classNames({
-		ship: true,
-		horizontal:
-			selectedShip &&
-			selectedShip.name === shipClass &&
-			selectedShip.shipOrientation === 'Horizontal',
-		vertical:
-			selectedShip &&
-			selectedShip.name === shipClass &&
-			selectedShip.shipOrientation === 'Vertical',
-	});
 
 	return (
 		<div className="ship-container" ref={shipContainerRef}>
@@ -43,13 +31,10 @@ const Ship = ({ gameAreaRef, shipClass }: Props) => {
 				onPointerMove={() => movePointer(shipClass)}
 				onPointerUp={() => endDrag(shipClass)}
 				drag
-				// dragControls={dragControls}
 				dragConstraints={shipContainerRef}
-				// className={shipClassNames}
 				className="ship"
 				ref={shipRef}
 				dragElastic={0.98}
-				// layout
 				transition={spring}
 				animate={{
 					rotate:

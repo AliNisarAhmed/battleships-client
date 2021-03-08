@@ -30,7 +30,7 @@ export const LocalSinglePlayer = () => {
 		<div className="game">
 			<div className="game-area" ref={gameAreaRef}>
 				<GameBoard />
-				<Shipyard gameAreaRef={gameAreaRef} />
+				<Shipyard />
 				<h2>{selectedShip?.name}</h2>
 				<p>{selectedShip?.left}</p>
 				<p>{selectedShip?.right}</p>

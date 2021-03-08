@@ -2,11 +2,9 @@ import { FC, useRef } from 'react';
 import { useAppSelector } from '../store/hooks';
 import Ship from './Ship';
 
-interface Props {
-	gameAreaRef: any;
-}
+interface Props {}
 
-const Shipyard: FC<Props> = ({ gameAreaRef }) => {
+const Shipyard: FC<Props> = () => {
 	const ships = useAppSelector((state) => state.ships);
 	const shipyardRef = useRef<any>(null);
 
