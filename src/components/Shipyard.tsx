@@ -12,9 +12,11 @@ const Shipyard: FC<Props> = ({ gameAreaRef }) => {
 
 	return (
 		<div className="shipyard" ref={shipyardRef}>
-			{ships.filter(s => !s.placedOnBoard).map((ship) => (
-				<Ship gameAreaRef={shipyardRef} shipClass={ship.entityName} />
-			))}
+			{ships
+				.filter((s) => !s.placedOnBoard)
+				.map((ship) => (
+					<Ship gameAreaRef={shipyardRef} shipClass={ship.entityName} key={ship.entityName} />
+				))}
 		</div>
 	);
 };

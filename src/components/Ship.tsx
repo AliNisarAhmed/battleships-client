@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { PlacedShipSquares, ShipClass, ShipName, ShipSize } from '../types';
 import { useRef } from 'react';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { selectShip, unselectShip } from '../store/selectedShipSlice';
+import { selectShip, unselectShip, updateShip } from '../store/selectedShipSlice';
 import classNames from 'classnames';
 import { placeShipOnBoard } from '../store/shipSlice';
 import { clearHoveredSquares } from '../store/boardSlice';
@@ -73,28 +73,13 @@ const Ship = ({ gameAreaRef, shipClass }: Props) => {
 
 	function movePointer(name: ShipName) {
 		if (selectedShip && shipRef.current) {
-			const {
-				top,
-				left,
-				bottom,
-				right,
-				x,
-				y,
-				width,
-				height,
-			} = shipRef.current.getBoundingClientRect();
+			const { top, left, bottom, right } = shipRef.current.getBoundingClientRect();
 			dispatch(
-				selectShip({
-					name,
+				updateShip({
 					top,
 					left,
 					bottom,
 					right,
-					x,
-					y,
-					width,
-					height,
-					shipOrientation: selectedShip.shipOrientation,
 				})
 			);
 		}

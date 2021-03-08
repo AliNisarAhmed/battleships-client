@@ -18,11 +18,11 @@ export interface SelectedShip {
 	left: number;
 	right: number;
 	bottom: number;
+	shipOrientation: ShipOrientation;
 	x: number;
 	y: number;
 	width: number;
 	height: number;
-	shipOrientation: ShipOrientation;
 }
 
 export enum ShipClass {
@@ -64,7 +64,5 @@ export interface ShipEntity {
 }
 
 
-export interface PlaceShipAction {
-	shipName: ShipName,
-	squares: PlacedShipSquares;
-}
+
+

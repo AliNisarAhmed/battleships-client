@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PlaceShipAction, ShipClass, ShipEntity } from '../types';
+import { ShipClass, ShipEntity } from '../types';
+import { PlaceShipAction } from '../types/actions';
 
 const initialState: ShipEntity[] = [
 	{ entityName: ShipClass.Carrier, placedOnBoard: false, squares: [] },
