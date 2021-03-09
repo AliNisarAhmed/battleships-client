@@ -70,6 +70,8 @@ export interface ShipEntity {
 	placedOnBoard: boolean;
 }
 
+export type Player = 'Human' | 'Computer';
 
-
-
+export interface BoardState {
+	[key: string]: Square;
+}

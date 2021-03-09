@@ -8,7 +8,7 @@ import { checkIfBoxHovered } from '../utils';
 interface Props {
 	square: Square;
 }
-export const GameSquare = ({ square }: Props) => {
+export const SetupSquare = ({ square }: Props) => {
 	const selectedShip = useAppSelector((state) => state.selectedShip);
 	const dispatch = useAppDispatch();
 

@@ -1,4 +1,4 @@
-import GameBoard from '../components/GameBoard';
+import SetupBoard from '../components/SetupBoard';
 import Shipyard from '../components/Shipyard';
 import Controls from '../components/Controls';
 import { useCallback, useEffect, useRef } from 'react';
@@ -30,7 +30,7 @@ export const LocalSinglePlayerSetup = () => {
 	return (
 		<div className="game">
 			<div className="game-area" ref={gameAreaRef}>
-				<GameBoard />
+				<SetupBoard />
 				<Shipyard />
 				<Controls />
 				<h2>{selectedShip?.name}</h2>

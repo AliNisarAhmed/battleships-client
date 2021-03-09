@@ -1,9 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PlacedShipSquares, Square } from '../types';
-
-interface BoardState {
-	[key: string]: Square;
-}
+import { BoardState, PlacedShipSquares, Square } from '../types';
 
 const initialState: BoardState = {};
 
@@ -11,7 +7,7 @@ Array.from({ length: 100 }).forEach((_, i) => {
 	initialState[i + 1] = {
 		id: i + 1,
 		hovered: false,
-		status: 'Hidden'
+		status: 'Hidden',
 	};
 });
 

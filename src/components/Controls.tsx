@@ -1,9 +1,12 @@
 import { useHistory } from 'react-router';
-import { useAppSelector } from '../store/hooks';
+import { initializeComputerBoard } from '../store/computerBoardSlice';
+import { initializeComputerShips } from '../store/computerShipSlice';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
 
 const Controls = () => {
 	const history = useHistory();
 	const ships = useAppSelector((state) => state.ships);
+	const dispatch = useAppDispatch();
 
 	return (
 		<div className="controls">
@@ -14,6 +17,8 @@ const Controls = () => {
 	);
 
 	function startGame() {
+		dispatch(initializeComputerShips());
+		dispatch(initializeComputerBoard());
 		history.push('/local/game');
 	}
 };

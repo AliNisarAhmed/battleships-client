@@ -1,8 +1,8 @@
 import { useAppSelector } from '../store/hooks';
-import { GameSquare } from './GameSquare';
+import { SetupSquare } from './SetupSquare';
 import { OccupiedSquare } from './OccupiedSquare';
 
-const GameBoard = () => {
+const SetupBoard = () => {
 	const board = useAppSelector((state) => state.board);
 	const ships = useAppSelector((state) => state.ships);
 
@@ -14,11 +14,11 @@ const GameBoard = () => {
 				occupiedBoardIds.includes(sq.id) ? (
 					<OccupiedSquare />
 				) : (
-					<GameSquare square={sq} key={sq.id} />
+					<SetupSquare square={sq} key={sq.id} />
 				)
 			)}
 		</div>
 	);
 };
 
-export default GameBoard;
+export default SetupBoard;
