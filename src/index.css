@@ -47,6 +47,20 @@ body {
   height: 80%;
 }
 
+.play-area {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.human-board {
+	grid-column: 2 / span 1;
+}
+
+.computer-board {
+	grid-column: 3 / span 1;
+	border: 2px solid yellow;
+}
+
 .game-board {
 	display: grid;
 	grid-template: repeat(10, auto) / repeat(10, minmax(1.6rem, 1fr));

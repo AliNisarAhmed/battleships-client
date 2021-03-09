@@ -1,6 +1,13 @@
+
+export type PlaySquareStatus = 'Hidden' | 'Hit' | 'Empty';
 export interface Square {
 	id: number;
 	hovered: boolean;
+	status: PlaySquareStatus;
+}
+
+export interface Board {
+	[key: string]: Square
 }
 
 export type ShipName =

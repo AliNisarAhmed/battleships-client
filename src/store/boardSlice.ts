@@ -11,6 +11,7 @@ Array.from({ length: 100 }).forEach((_, i) => {
 	initialState[i + 1] = {
 		id: i + 1,
 		hovered: false,
+		status: 'Hidden'
 	};
 });
 
