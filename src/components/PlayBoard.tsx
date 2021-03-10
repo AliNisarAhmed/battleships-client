@@ -8,9 +8,9 @@ interface Props {
 
 export const PlayBoard = ({ board, player }: Props) => {
 	return (
-		<div className={`game-board ${player.toLowerCase()}-player`}>
+		<div className={`game-board ${player.toLowerCase()}-board`}>
 			{Object.entries(board).map(([id, square]) => (
-				<PlaySquare key={`${id}-player`} square={square} />
+				<PlaySquare key={`${id}-player`} square={square} player={player} />
 			))}
 		</div>
 	);
