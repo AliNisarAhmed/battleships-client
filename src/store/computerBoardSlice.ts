@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Board } from '../types';
+import { ChangeSquareStatusAction } from '../types/actions';
 
 type PlayBoardState = null | Board;
 
@@ -20,9 +21,14 @@ export const computerBoardSlice = createSlice({
 			});
 			return newState;
 		},
+		changeComputerSquareStatus: (state, action: PayloadAction<ChangeSquareStatusAction>) => {
+			if (state) {
+				state[action.payload.id].status = action.payload.newStatus;
+			}
+		},
 	},
 });
 
-export const { initializeComputerBoard } = computerBoardSlice.actions;
+export const { initializeComputerBoard, changeComputerSquareStatus } = computerBoardSlice.actions;
 
 export default computerBoardSlice.reducer;

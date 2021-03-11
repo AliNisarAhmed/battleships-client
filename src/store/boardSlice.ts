@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BoardState, PlacedShipSquares, Square } from '../types';
+import { ChangeSquareStatusAction } from '../types/actions';
 
 const initialState: BoardState = {};
 
@@ -26,9 +27,19 @@ export const boardSlice = createSlice({
 				state[sq].hovered = false;
 			});
 		},
+		changeHumanSquareStatus: (state, action: PayloadAction<ChangeSquareStatusAction>) => {
+			if (state) {
+				state[action.payload.id].status = action.payload.newStatus;
+			}
+		},
 	},
 });
 
-export const { highlightSquare, unHighlightSquare, clearHoveredSquares } = boardSlice.actions;
+export const {
+	highlightSquare,
+	unHighlightSquare,
+	clearHoveredSquares,
+	changeHumanSquareStatus,
+} = boardSlice.actions;
 
 export default boardSlice.reducer;

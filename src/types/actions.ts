@@ -1,7 +1,7 @@
-import { PlacedShipSquares, ShipName } from ".";
+import { PlacedShipSquares, PlaySquareStatus, ShipName } from '.';
 
 export interface PlaceShipAction {
-	shipName: ShipName,
+	shipName: ShipName;
 	squares: PlacedShipSquares;
 }
 
@@ -10,4 +10,9 @@ export interface UpdateShipAction {
 	left: number;
 	right: number;
 	bottom: number;
+}
+
+export interface ChangeSquareStatusAction {
+	id: number;
+	newStatus: PlaySquareStatus;
 }
