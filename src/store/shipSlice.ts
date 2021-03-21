@@ -15,15 +15,16 @@ export const shipSlice = createSlice({
 	initialState,
 	reducers: {
 		placeShipOnBoard: (state, action: PayloadAction<PlaceShipAction>) => {
-			const selectedShip = state.find(s => s.entityName === action.payload.shipName);
+			const selectedShip = state.find((s) => s.entityName === action.payload.shipName);
 			if (selectedShip) {
 				selectedShip.placedOnBoard = true;
-				selectedShip.squares = action.payload.squares
+				selectedShip.squares = action.payload.squares;
 			}
 		},
+		resetHumanShips: () => initialState,
 	},
 });
 
-export const { placeShipOnBoard } = shipSlice.actions;
+export const { placeShipOnBoard, resetHumanShips } = shipSlice.actions;
 
 export default shipSlice.reducer;

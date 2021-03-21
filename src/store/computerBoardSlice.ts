@@ -26,9 +26,14 @@ export const computerBoardSlice = createSlice({
 				state[action.payload.id].status = action.payload.newStatus;
 			}
 		},
+		resetComputerBoard: () => null,
 	},
 });
 
-export const { initializeComputerBoard, changeComputerSquareStatus } = computerBoardSlice.actions;
+export const {
+	initializeComputerBoard,
+	changeComputerSquareStatus,
+	resetComputerBoard,
+} = computerBoardSlice.actions;
 
 export default computerBoardSlice.reducer;

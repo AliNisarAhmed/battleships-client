@@ -2,15 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BoardState, PlacedShipSquares, Square } from '../types';
 import { ChangeSquareStatusAction } from '../types/actions';
 
-const initialState: BoardState = {};
-
-Array.from({ length: 100 }).forEach((_, i) => {
-	initialState[i + 1] = {
+const initialState: BoardState = Array.from({ length: 100 }).reduce<BoardState>((acc, _, i) => {
+	acc[i + 1] = {
 		id: i + 1,
 		hovered: false,
 		status: 'Hidden',
 	};
-});
+	return acc;
+}, {});
 
 export const boardSlice = createSlice({
 	name: 'board',
@@ -32,6 +31,7 @@ export const boardSlice = createSlice({
 				state[action.payload.id].status = action.payload.newStatus;
 			}
 		},
+		resetHumanBoard: (_) => initialState,
 	},
 });
 
@@ -40,6 +40,7 @@ export const {
 	unHighlightSquare,
 	clearHoveredSquares,
 	changeHumanSquareStatus,
+	resetHumanBoard,
 } = boardSlice.actions;
 
 export default boardSlice.reducer;

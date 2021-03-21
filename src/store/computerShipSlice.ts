@@ -40,9 +40,10 @@ const computerShipSlice = createSlice({
 		initializeComputerShips: () => {
 			return testInitialPosition;
 		},
+		resetComputerShips: () => null,
 	},
 });
 
-export const { initializeComputerShips } = computerShipSlice.actions;
+export const { initializeComputerShips, resetComputerShips } = computerShipSlice.actions;
 
 export default computerShipSlice.reducer;
