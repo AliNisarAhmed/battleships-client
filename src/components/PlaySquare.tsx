@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useCallback, useEffect } from 'react';
+import { computerTurnTimeout } from '../settings';
 import { changeHumanSquareStatus } from '../store/boardSlice';
 import { changeComputerSquareStatus } from '../store/computerBoardSlice';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
@@ -23,7 +24,7 @@ export const PlaySquare = ({ square, squareOwner }: Props) => {
 
 	const computerTurn = useCallback(
 		async (humanBoard: BoardState, humanShips: ShipEntity[]) => {
-			await timeout(1200);
+			await timeout(computerTurnTimeout);
 
 			const hiddenSquares = Object.entries(humanBoard).filter(
 				([id, square]) => square.status === 'Hidden'
