@@ -52,6 +52,16 @@ export const PlaySquare = ({ square, squareOwner }: Props) => {
 			squareHit();
 		}
 
+		if (square.status === 'Empty' && squareOwner === 'Computer') {
+			squareMiss();
+		}
+
+		async function squareMiss() {
+			dispatch(changeTurn());
+			await computerTurn(humanBoard, humanShips);
+			dispatch(changeTurn());
+		}
+
 		async function squareHit() {
 			const result = checkWinCondition(computerBoard!, computerShips!);
 
