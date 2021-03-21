@@ -2,6 +2,10 @@
 
 An implementation of the two player game Battleships.
 
+### Project Status
+
+Check out current progress on the Project board [here](https://github.com/users/AliNisarAhmed/projects/13)
+
 --
 
 ## Running the project locally
