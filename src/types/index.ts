@@ -32,6 +32,8 @@ export interface SelectedShip {
 	height: number;
 }
 
+export type SelectedShipState = null | SelectedShip;
+
 export enum ShipClass {
 	Carrier = 'Carrier',
 	Battleship = 'Battleship',

@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SelectedShip } from '../types';
+import { SelectedShip, SelectedShipState } from '../types';
 import { UpdateShipAction } from '../types/actions';
-
-type SelectedShipState = null | SelectedShip;
 
 const initialState: SelectedShipState = null as SelectedShipState;
 
