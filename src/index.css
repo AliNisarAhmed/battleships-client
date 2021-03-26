@@ -1,5 +1,7 @@
 :root {
 	--boxSize: 4rem;
+	--validShipColor: green;
+	--invalidShipColor: rgba(255, 0, 0, 0.692);
 }
 
 html {
@@ -87,8 +89,12 @@ body {
 	border: 1px dashed darkblue;
 }
 
-.hovered-square {
-	border: 2px solid orange;
+.hovered-square-warn {
+	border: 2px solid var(--invalidShipColor);
+}
+
+.hovered-square-clear {
+	border: 2px solid var(--validShipColor);
 }
 
 .occupied-square {

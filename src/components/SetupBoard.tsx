@@ -2,7 +2,11 @@ import { useAppSelector } from '../store/hooks';
 import { SetupSquare } from './SetupSquare';
 import { OccupiedSquare } from './OccupiedSquare';
 
-const SetupBoard = () => {
+interface Props {
+	hoveredSquares: number[];
+}
+
+const SetupBoard = ({ hoveredSquares }: Props) => {
 	const board = useAppSelector((state) => state.board);
 	const ships = useAppSelector((state) => state.ships);
 
@@ -14,7 +18,7 @@ const SetupBoard = () => {
 				occupiedBoardIds.includes(sq.id) ? (
 					<OccupiedSquare />
 				) : (
-					<SetupSquare square={sq} key={sq.id} />
+					<SetupSquare square={sq} key={sq.id} hoveredSquares={hoveredSquares}/>
 				)
 			)}
 		</div>

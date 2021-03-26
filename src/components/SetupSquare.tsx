@@ -1,4 +1,4 @@
-import { Square } from '../types';
+import { ShipSize, Square } from '../types';
 import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { useEffect, useRef } from 'react';
@@ -7,8 +7,9 @@ import { checkIfBoxHovered } from '../utils';
 
 interface Props {
 	square: Square;
+	hoveredSquares: number[];
 }
-export const SetupSquare = ({ square }: Props) => {
+export const SetupSquare = ({ square, hoveredSquares }: Props) => {
 	const selectedShip = useAppSelector((state) => state.selectedShip);
 	const dispatch = useAppDispatch();
 
@@ -32,7 +33,10 @@ export const SetupSquare = ({ square }: Props) => {
 
 	const squareClass = classNames({
 		'board-square': true,
-		'hovered-square': square.hovered,
+		'hovered-square-warn':
+			selectedShip && square.hovered && hoveredSquares.length !== ShipSize[selectedShip.name],
+		'hovered-square-clear':
+			selectedShip && square.hovered && hoveredSquares.length === ShipSize[selectedShip.name],
 	});
 
 	return (
