@@ -23,6 +23,8 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 
 	min-height: 100vh;
+
+	background-color: skyblue;
 }
 
 /* ==============================================
@@ -31,10 +33,52 @@ body {
 
 .app {
 	border: 1px solid red;
-	width: 80vw;
-	max-width: 120rem;
+	width: 100%;
+	background-color: skyblue;
+	/* width: 80vw; */
+	/* max-width: 120rem; */
 	height: 100vh;
 	margin: 0 auto;
+}
+
+.landing-page {
+	margin: 0 auto;
+	background-color: skyblue;
+
+	height: 100%;
+
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 2fr;
+}
+
+.landing-page-title {
+	text-align: center;
+	font-size: 12rem;
+
+	grid-row: 1 / 2;
+}
+
+.landing-page-menu-container {
+	background-color: steelblue;
+	grid-row: 2 / -1;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.landing-page-menu {
+	list-style: none;
+	grid-area: menu;
+}
+
+.landing-page-menu-link {
+	text-decoration: none;
+	color: rgb(20, 106, 206);
+	font-size: 3rem;
+	margin-bottom: 2rem;
 }
 
 .game {
