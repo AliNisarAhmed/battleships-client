@@ -1,5 +1,7 @@
 :root {
+	--boardMaxWidth: 120rem;
 	--boxSize: 4rem;
+	--boxBorderSize: 1px;
 	--validShipColor: green;
 	--invalidShipColor: rgba(255, 0, 0, 0.692);
 }
@@ -81,20 +83,16 @@ body {
 	margin-bottom: 2rem;
 }
 
-.game {
-	border: 2px solid yellow;
-	width: 100%;
+.setup {
+	border: 2px solid red;
 	height: 100%;
 }
 
-.game-area {
-	/* display: grid;
-  grid-template: auto auto auto / 1fr 1fr 1fr;
-  grid-template-areas:
-    'board board shipyard'
-    'board board shipyard'
-    'board board shipyard'; */
-	height: 80%;
+.setup-area {
+	border: 1px dotted blue;
+	margin: 0 auto;
+	max-width: 120rem;
+	height: 100%;
 }
 
 .play-area {
@@ -118,9 +116,9 @@ body {
 
 .game-board {
 	display: grid;
-	grid-template: repeat(10, auto) / repeat(10, minmax(1.6rem, 1fr));
+	grid-template: repeat(10, auto) / repeat(10, minmax(1rem, calc((60vh / 10) - 2 * var(--boxBorderSize))));
 	align-items: start;
-	max-width: calc(10 * var(--boxSize));
+	max-width: var(--boardMaxWidth);
 }
 
 /* =================================================================
@@ -128,8 +126,10 @@ body {
 ==================================================================== */
 
 .board-square {
-	width: var(--boxSize);
-	height: var(--boxSize);
+	/* width: var(--boxSize);
+	height: var(--boxSize); */
+	width: calc((60vh / 10) - 2 * var(--boxBorderSize));
+	height: calc((60vh / 10) - 2 * var(--boxBorderSize));
 	border: 1px dashed darkblue;
 }
 
@@ -178,8 +178,8 @@ body {
 }
 
 .ship div {
-	width: var(--boxSize);
-	height: var(--boxSize);
+	width: calc((60vh / 10) - 2 * var(--boxBorderSize));
+	height: calc((60vh / 10) - 2 * var(--boxBorderSize));
 }
 
 .ship.vertical {

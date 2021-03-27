@@ -16,8 +16,8 @@ export const LocalSinglePlayerSetup = () => {
 	useKeydown(selectedShip, dispatch);
 
 	return (
-		<div className="game">
-			<div className="game-area" ref={gameAreaRef}>
+		<div className="setup">
+			<div className="setup-area" ref={gameAreaRef}>
 				<SetupBoard hoveredSquares={hoveredSquares}/>
 				<Shipyard />
 				<Controls />
