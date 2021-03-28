@@ -32,7 +32,7 @@ const Ship = ({ gameAreaRef, shipClass }: Props) => {
 				onPointerUp={() => endDrag(shipClass)}
 				drag
 				dragConstraints={shipContainerRef}
-				className="ship"
+				className={`ship ${shipClass}`}
 				ref={shipRef}
 				dragElastic={0.98}
 				transition={spring}

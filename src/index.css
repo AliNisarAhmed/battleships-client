@@ -4,6 +4,7 @@
 	--boxBorderSize: 1px;
 	--validShipColor: green;
 	--invalidShipColor: rgba(255, 0, 0, 0.692);
+	--waterColor: steelblue;
 }
 
 html {
@@ -62,13 +63,15 @@ body {
 }
 
 .landing-page-menu-container {
-	background-color: steelblue;
+	background-color: var(--waterColor);
 	grid-row: 2 / -1;
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+
+	position: relative;
 }
 
 .landing-page-menu {
@@ -116,7 +119,10 @@ body {
 
 .game-board {
 	display: grid;
-	grid-template: repeat(10, auto) / repeat(10, minmax(1rem, calc((60vh / 10) - 2 * var(--boxBorderSize))));
+	grid-template: repeat(10, auto) / repeat(
+			10,
+			minmax(1rem, calc((60vh / 10) - 2 * var(--boxBorderSize)))
+		);
 	align-items: start;
 	max-width: var(--boardMaxWidth);
 }
@@ -126,11 +132,10 @@ body {
 ==================================================================== */
 
 .board-square {
-	/* width: var(--boxSize);
-	height: var(--boxSize); */
 	width: calc((60vh / 10) - 2 * var(--boxBorderSize));
 	height: calc((60vh / 10) - 2 * var(--boxBorderSize));
 	border: 1px dashed darkblue;
+	background-color: var(--waterColor);
 }
 
 .hovered-square-warn {
@@ -138,7 +143,7 @@ body {
 }
 
 .hovered-square-clear {
-	border: 2px solid var(--validShipColor);
+	background-color: var(--validShipColor);
 }
 
 .occupied-square {
@@ -171,18 +176,54 @@ body {
 }
 
 .ship {
-	/* width: var(--boxSize); */
 	display: flex;
-	/* flex-direction: column; */
 	border: 1px solid black;
+	position: relative;
+	overflow: hidden;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
 }
+
+/* Source of sprites: https://opengameart.org/content/sea-warfare-set-ships-and-more */
+
+.PatrolBoat {
+	background-image: url(./assets/ShipPatrolHull.png);
+}
+
+.Carrier {
+	background-image: url(./assets/ShipCarrierHull.png);
+}
+
+.Battleship {
+	background-image: url(./assets/ShipBattleshipHull.png);
+}
+
+.Destroyer {
+	background-image: url(./assets/ShipDestroyerHull.png);
+}
+
+.Submarine {
+	background-image: url(./assets/ShipSubMarineHull.png);
+}
+
 
 .ship div {
 	width: calc((60vh / 10) - 2 * var(--boxBorderSize));
 	height: calc((60vh / 10) - 2 * var(--boxBorderSize));
+	/* border: 1px solid yellow; */
 }
 
 .ship.vertical {
 	flex-direction: column;
 	border-bottom: 1px solid black;
+}
+
+.waves {
+	width: 100%;
+	height: 35ipx;
+	position: absolute;
+	top: -34px;
+	left: 0;
+	background-image: url(./assets/drawing.svg);
 }
